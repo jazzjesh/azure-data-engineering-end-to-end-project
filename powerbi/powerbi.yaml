@@ -1,0 +1,140 @@
+The following SQL views are consumed in Power BI:
+
+- `gold.customers`
+- `gold.products`
+- `gold.sales`
+- Additional Star Schema tables (DimDate, DimCustomer, DimProduct, FactSales)
+
+Power BI does **not** import data files directly; instead, it queries Gold data using Synapse SQL Views.
+
+---
+
+## 2️⃣ Data Model Used in Power BI
+
+The model follows a clean **Star Schema** optimized for analytics.
+
+### ⭐ Fact Table
+**FactSales**
+- Order-level transaction data
+- Linked to Product, Customer, and Date dimensions
+- Fields include:
+  - SalesOrderID  
+  - OrderDateKey  
+  - CustomerID  
+  - ProductID  
+  - Quantity  
+  - UnitPrice  
+  - TotalAmount  
+
+### ⭐ Dimension Tables
+- **DimCustomer**
+- **DimProduct**
+- **DimDate**
+
+### 🔗 Relationships
+- FactSales → DimCustomer (`CustomerID`)
+- FactSales → DimProduct (`ProductID`)
+- FactSales → DimDate (`OrderDateKey`)
+
+This ensures:
+- High performance  
+- Accurate aggregations  
+- Clean and expressive visuals  
+
+---
+
+## 3️⃣ Power BI Dashboard Visuals
+
+Your report includes several core business insights:
+
+---
+
+### 📈 **Sales Trends (YOY / Monthly)**
+Visuals:
+- Line chart: Sales over time  
+- Seasonal patterns  
+- YOY comparison  
+
+Insights:
+- Are sales improving over the years?
+- Which months show peak performance?
+
+---
+
+### 🛍️ **Top Products & Categories**
+Visuals:
+- Bar chart of top-selling categories  
+- Top 10 products by revenue  
+
+Insights:
+- What products drive revenue?
+- Which categories underperform?
+
+---
+
+### 🌎 **Sales by Territory**
+Visuals:
+- Map visualization  
+- Sales by country/region  
+
+Insights:
+- Where is performance strong geographically?
+- What regions need improvement?
+
+---
+
+### 👥 **Customer Insights**
+Visuals:
+- Customer segmentation  
+- Repeat vs new customers  
+- High-value customer groups  
+
+Insights:
+- Who are the most valuable customers?
+- Which customer groups drive the most revenue?
+
+---
+
+### 💰 **Financial KPIs**
+Visuals:
+- Total Revenue  
+- Average Order Value  
+- Total Quantity Sold  
+- Profitability metrics (if added)  
+
+Insights:
+- How profitable are different product lines?
+- What’s the overall revenue health?
+
+---
+
+## 4️⃣ Why Power BI + Synapse Works Perfectly
+
+### ✔ No data duplication  
+Power BI queries Synapse SQL Views directly.
+
+### ✔ Faster performance  
+Serverless SQL + Parquet = optimized dashboard loading.
+
+### ✔ Enterprise-friendly  
+Matches real Azure analytics architecture.
+
+### ✔ Easy refresh  
+Power BI refreshes automatically using the Synapse endpoint.
+
+---
+
+## 5️⃣ Summary
+
+Power BI acts as the **final serving and visualization layer** of your Azure Data Engineering pipeline.  
+It transforms the engineered Gold dataset into actionable insights and business intelligence.
+
+This showcases your ability to deliver:
+- End-to-end data engineering  
+- Analytics-ready models  
+- Clean visualization workflows  
+- Real-world Azure BI integration  
+
+---
+
+# ✅ END OF FILE
